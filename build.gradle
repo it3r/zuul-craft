@@ -1,0 +1,5 @@
+tasks.register("build") {
+    subprojects.each { 
+        dependsOn("${it.name}:bootJar") 
+    }
+}

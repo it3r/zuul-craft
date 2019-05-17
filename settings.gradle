@@ -1,0 +1,6 @@
+rootProject.name = 'zuul-eurek'
+
+include 'eureka'
+include 'service'
+include 'zuul'
+

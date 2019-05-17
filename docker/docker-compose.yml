@@ -1,0 +1,32 @@
+version: '3.5'
+services:
+  zuul:
+    build:
+      context: .
+      dockerfile: zuul.dockerfile
+    image: zuul
+    hostname: zuul
+    depends_on:
+      - "eureka"
+    ports:
+      - "5000:8762"
+
+  eureka:
+    build:
+      context: .
+      dockerfile: eureka.dockerfile
+    image: eureka
+    hostname: eureka
+    ports:
+      - "5001:8761"
+
+  service:
+    build:
+      context: .
+      dockerfile: service.dockerfile
+    image: service
+#    hostname: service
+    depends_on:
+      - "eureka"
+#    ports:
+#      - "5002:80"

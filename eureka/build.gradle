@@ -1,0 +1,35 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.1.RELEASE")
+    }
+}
+
+plugins {
+    id 'java'
+}
+
+group 'com.iter.podelki'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+sourceCompatibility = 1.8
+
+bootJar {
+    baseName = 'podelki-eureka-server'
+    version =  '0.1.0'
+    destinationDir file('../docker/res')
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-server', version: '2.1.1.RELEASE'
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
